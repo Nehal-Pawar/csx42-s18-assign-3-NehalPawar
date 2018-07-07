@@ -33,6 +33,7 @@ public class Driver
         FileProcessor F1 = new FileProcessor();
 	TreeBuilder treeBuilder = new TreeBuilder();
 	Node node;	
+	Node backup1 = null, backup2 = null;
         List<String> zoom = new ArrayList<>();
 	int count;
         Results Re = new Results();
@@ -48,10 +49,24 @@ public class Driver
         {
 		if(temp!=null)
 		{
+		try
+		{
 		String values[] = temp.split(":");
 		Bnumber = Integer.parseInt(values[0]);
 		node = treeBuilder.createNode(values[1],Bnumber);
+		backup1 = (Node) node.clone();		
+		backup2 = (Node) node.clone();
+		node.registerObserver(backup1);
+		node.registerObserver(backup2);
+		}
+		 catch (CloneNotSupportedException e) 
+		{
+			System.out.println("Error while cloning.");
+			e.printStackTrace();
+			System.exit(0);
+		}			
 		}
 	}	
+	
     }
 }

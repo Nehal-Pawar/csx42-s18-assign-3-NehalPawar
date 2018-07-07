@@ -1,11 +1,12 @@
 package studentCoursesBackup.myTree;
 import java.util.*;
 
-public class Node
+public class Node implements Cloneable
 {
 	private int Bnumber;
 	private List<String> courses;
 	public Node left,right;
+	private List<Node> backupNodesList = new ArrayList<>();
 
 	public Node() {
 		left = null;
@@ -23,5 +24,12 @@ public class Node
 	}
 	public List<String> getCourses() {
 		return courses;
+	}
+	@Override
+	public Object clone() throws CloneNotSupportedException{
+		return super.clone();
+	}
+	public void registerObserver(Node observer) {
+		backupNodesList.add(observer);
 	}
 }
