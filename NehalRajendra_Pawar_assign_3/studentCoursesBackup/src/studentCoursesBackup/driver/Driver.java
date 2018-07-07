@@ -1,8 +1,10 @@
 package studentCoursesBackup.driver;
 import studentCoursesBackup.util.FileProcessor;
 import studentCoursesBackup.util.Results;
+import studentCoursesBackup.util.TreeBuilder;
 import studentCoursesBackup.util.MyLogger;
 import java.util.*;
+import studentCoursesBackup.myTree.Node;
 
 public class Driver
 {
@@ -29,6 +31,8 @@ public class Driver
 	}
         
         FileProcessor F1 = new FileProcessor();
+	TreeBuilder treeBuilder = new TreeBuilder();
+	Node node;	
         List<String> zoom = new ArrayList<>();
 	int count;
         Results Re = new Results();
@@ -39,12 +43,15 @@ public class Driver
       	//System.out.println(zoom);
 	//Read array in loop and parse
 	
-	int bNumber;
+	int Bnumber;
         for (String temp : zoom)
         {
-		String arr[] = temp.split(":");
-		bNumber = Integer.parseInt(arr[0]);
-	}
-	
+		if(temp!=null)
+		{
+		String values[] = temp.split(":");
+		Bnumber = Integer.parseInt(values[0]);
+		node = treeBuilder.createNode(values[1],Bnumber);
+		}
+	}	
     }
 }
