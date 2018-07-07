@@ -1,10 +1,10 @@
-package fourWayStreetLights.util;
+package studentCoursesBackup.util;
 
 import java.util.List;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.Vector;
-import fourWayStreetLights.util.MyLogger;
+import studentCoursesBackup.util.MyLogger;
 
 public class Results  implements FileDisplayInterface, StdoutDisplayInterface{
 

@@ -1,6 +1,6 @@
-package fourWayStreetLights.util;
+package studentCoursesBackup.util;
 
-import fourWayStreetLights.util.MyLogger;
+import studentCoursesBackup.util.MyLogger;
 
 public class MyLogger
 {
