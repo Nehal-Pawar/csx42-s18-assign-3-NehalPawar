@@ -58,13 +58,15 @@ public class Driver
 		backup2 = (Node) node.clone();
 		node.registerObserver(backup1);
 		node.registerObserver(backup2);
+		treeBuilder.insertNodes(node);
 		}
 		 catch (CloneNotSupportedException e) 
 		{
 			System.out.println("Error while cloning.");
 			e.printStackTrace();
 			System.exit(0);
-		}			
+		}
+					
 		}
 	}	
 	

@@ -13,6 +13,7 @@ public class Node implements Cloneable
 		right = null;
 		Bnumber = 0;
 	}
+	
 	public void setBnumber(int Bnumber) {
 		this.Bnumber = Bnumber;
 	}
@@ -24,6 +25,9 @@ public class Node implements Cloneable
 	}
 	public List<String> getCourses() {
 		return courses;
+	}
+	public List<Node> getbackupNodesList() {
+		return backupNodesList;
 	}
 	@Override
 	public Object clone() throws CloneNotSupportedException{
