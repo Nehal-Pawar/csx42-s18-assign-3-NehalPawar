@@ -48,4 +48,38 @@ public class TreeBuilder
  
         return root;
 	}
+
+	 public void PrintTree(Node rootNode, Results result)  {
+		 if (rootNode != null) {
+		    PrintTree(rootNode.left, result);
+	            result.storeNewResult(rootNode.getBnumber()+" "+ rootNode.getCourses());
+		    PrintTree(rootNode.right, result);
+	        }
+	}
+	//https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
+	public Node search(Node root, int Bnumber)
+	{
+    	if (root==null)
+        return null; 
+	else if(root.getBnumber()==Bnumber)
+	return root;
+    	else if (root.getBnumber()> Bnumber)
+        return search(root.left, Bnumber);
+ 	else 
+    	return search(root.right, Bnumber);
+	}
+	
+	public Node BnumberSearch(int Bnumber)
+	{
+		Node found=search(Root,Bnumber);
+		if(found!=null)
+		return found;
+	return null;
+	}
+	
+	public void Display() 
+	{
+	Results Re = new Results();
+    	PrintTree(Root, Re);
+    	}
 }

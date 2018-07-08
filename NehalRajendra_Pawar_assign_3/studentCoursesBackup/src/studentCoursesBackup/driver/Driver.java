@@ -36,7 +36,7 @@ public class Driver
 	Node backup1 = null, backup2 = null;
         List<String> zoom = new ArrayList<>();
 	int count;
-        Results Re = new Results();
+        
 	
 	//Read file and add to array
 	
@@ -53,6 +53,8 @@ public class Driver
 		{
 		String values[] = temp.split(":");
 		Bnumber = Integer.parseInt(values[0]);
+		node=treeBuilder.BnumberSearch(Bnumber);
+		if(node==null){
 		node = treeBuilder.createNode(values[1],Bnumber);
 		backup1 = (Node) node.clone();		
 		backup2 = (Node) node.clone();
@@ -60,15 +62,24 @@ public class Driver
 		node.registerObserver(backup2);
 		treeBuilder.insertNodes(node);
 		}
-		 catch (CloneNotSupportedException e) 
+		else
+		{
+			List<String> courses=node.getCourses();	
+			courses.add(values[1]);
+      			System.out.println(courses);
+			
+		}
+		}
+		catch(CloneNotSupportedException e) 
 		{
 			System.out.println("Error while cloning.");
 			e.printStackTrace();
 			System.exit(0);
-		}
-					
+		}					
 		}
 	}	
+	treeBuilder.Display();
+	
 	
     }
 }
