@@ -34,7 +34,7 @@ public class Driver
 	TreeBuilder treeBuilder = new TreeBuilder();
 	Node node;	
 	Node backup1 = null, backup2 = null;
-        List<String> zoom = new ArrayList<>();
+        Set<String> zoom = new LinkedHashSet<>();
 	int count;
         
 	
@@ -64,10 +64,7 @@ public class Driver
 		}
 		else
 		{
-			List<String> courses=node.getCourses();	
-			courses.add(values[1]);
-      			System.out.println(courses);
-			
+			node.getCourses().add(values[1]);			
 		}
 		}
 		catch(CloneNotSupportedException e) 
@@ -78,8 +75,6 @@ public class Driver
 		}					
 		}
 	}	
-	treeBuilder.Display();
-	
-	
+	treeBuilder.Display();	
     }
 }

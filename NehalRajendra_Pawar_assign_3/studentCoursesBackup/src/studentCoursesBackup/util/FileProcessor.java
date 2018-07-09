@@ -9,8 +9,8 @@ public class FileProcessor
 {
     FileReader F = null;
     BufferedReader BR = null;
-    List<String> zoom = new ArrayList<>();
-    public List<String> openFile(String InputFileName)
+    Set<String> zoom = new LinkedHashSet<>();
+    public Set<String> openFile(String InputFileName)
     {
         try
         {
@@ -21,7 +21,7 @@ public class FileProcessor
             {
                 number = readLine();
                 if (number == null) break;
-                zoom.add(number);
+                zoom.add(number.trim());
             }
         }
         catch (FileNotFoundException e)
