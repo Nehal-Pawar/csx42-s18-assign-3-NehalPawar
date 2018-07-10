@@ -6,7 +6,7 @@ import java.util.*;
 public class Node implements SubjectI ,ObserverI ,Cloneable
 {
 	private int Bnumber;
-	private List<String> courses;
+	private List<String> courses = new ArrayList<>();
 	public Node left,right;
 	private List<Node> backupNodesList = new ArrayList<>();
 
@@ -14,6 +14,7 @@ public class Node implements SubjectI ,ObserverI ,Cloneable
 		left = null;
 		right = null;
 		Bnumber = 0;
+		//courses  = null;
 	}
 	
 	public void setBnumber(int Bnumber) {
@@ -33,14 +34,18 @@ public class Node implements SubjectI ,ObserverI ,Cloneable
 	}
 	@Override
 	public Object clone() throws CloneNotSupportedException{
-		return super.clone();
+		Node node1=new Node();
+		node1.Bnumber=Bnumber;
+		node1.courses=new ArrayList<>(courses);
+		return node1;
 	}
 	@Override
 	public void registerObserver(Node observer) {
 		backupNodesList.add(observer);
 	}
+	@Override
 	public void notifyall(PassParameter P) {
-		if(P.getNotifyType()==PassParameter.NotifyType.Update)
+		
 		for(Node node : backupNodesList) {
 			node.updateall(P);
 		}
@@ -50,8 +55,12 @@ public class Node implements SubjectI ,ObserverI ,Cloneable
 	{
 
 	}
+	@Override
 	public void updateall(PassParameter P)
-	{
-		node.getCourses().add(values[1]);
+	{		
+		if(P.getNotifyType()==PassParameter.NotifyType.Update)		
+		courses.add(P.getcourse());
+		else if(P.getNotifyType()==PassParameter.NotifyType.Delete)
+		courses.remove(P.getcourse());
 	}
 }

@@ -14,11 +14,10 @@ public class TreeBuilder
 		Root2 = null;
 	}
 
-	public Node createNode(String course,int Bnumber) {
-		List<String> list = new ArrayList<>();
+	public Node createNode(String course,int Bnumber) {		
 		Node node = new Node();
 		node.setBnumber(Bnumber);	
-		
+		List<String> list = new ArrayList<>();
 		list.add(course);
 		node.setCourses(list);
 		
@@ -56,6 +55,7 @@ public class TreeBuilder
 		    PrintTree(rootNode.right, result);
 	        }
 	}
+
 	//https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
 	public Node search(Node root, int Bnumber)
 	{
@@ -80,6 +80,8 @@ public class TreeBuilder
 	public void Display() 
 	{
 	Results Re = new Results();
-    	PrintTree(Root1, Re);
+    	PrintTree(Root, Re);
+	PrintTree(Root1, Re);
+	PrintTree(Root2, Re);
     	}
 }

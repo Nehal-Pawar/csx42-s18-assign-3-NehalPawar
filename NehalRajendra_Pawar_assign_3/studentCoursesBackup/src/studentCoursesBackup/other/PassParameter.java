@@ -27,6 +27,5 @@ public class PassParameter
 	public NotifyType getNotifyType()
 	{
 		return debugLevel;
-	}
-		
+	}		
 }
