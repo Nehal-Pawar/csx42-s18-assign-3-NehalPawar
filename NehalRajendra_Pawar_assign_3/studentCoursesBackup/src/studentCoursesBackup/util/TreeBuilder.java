@@ -74,12 +74,12 @@ public class TreeBuilder
 		Node found=search(Root,Bnumber);
 		if(found!=null)
 		return found;
-	return null;
+		return null;
 	}
 	
 	public void Display() 
 	{
 	Results Re = new Results();
-    	PrintTree(Root, Re);
+    	PrintTree(Root1, Re);
     	}
 }

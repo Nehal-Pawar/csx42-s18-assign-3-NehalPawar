@@ -1,9 +1,11 @@
 package studentCoursesBackup.myTree;
 
+import studentCoursesBackup.other.PassParameter;
+
 public interface SubjectI {
 
 	public void registerObserver(Node observer);
 	public void removeObserver(Node observer);
-	public void notifyObservers(int bNumber, String course);
+	public void notifyall(PassParameter P);
 	
 }

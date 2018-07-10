@@ -5,6 +5,7 @@ import studentCoursesBackup.util.TreeBuilder;
 import studentCoursesBackup.util.MyLogger;
 import java.util.*;
 import studentCoursesBackup.myTree.Node;
+import studentCoursesBackup.other.PassParameter;
 
 public class Driver
 {
@@ -36,7 +37,7 @@ public class Driver
 	Node backup1 = null, backup2 = null;
         Set<String> zoom = new LinkedHashSet<>();
 	int count;
-        
+        PassParameter Pass=new PassParameter();
 	
 	//Read file and add to array
 	
@@ -64,7 +65,11 @@ public class Driver
 		}
 		else
 		{
-			node.getCourses().add(values[1]);			
+			System.out.println(Bnumber + "  reached node added "+values[1]);
+			node.getCourses().add(values[1]);
+			Pass.setcourse(values[1]);
+			Pass.setNotifyType(PassParameter.NotifyType.Update);
+			node.notifyall(Pass);			
 		}
 		}
 		catch(CloneNotSupportedException e) 

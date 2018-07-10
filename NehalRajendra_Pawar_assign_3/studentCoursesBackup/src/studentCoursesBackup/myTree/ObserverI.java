@@ -1,6 +1,8 @@
 package studentCoursesBackup.myTree;
 
+import studentCoursesBackup.other.PassParameter;
+
 public interface ObserverI {
 
-	public void update(String course, int bNumber);
+	public void updateall(PassParameter P);
 }
