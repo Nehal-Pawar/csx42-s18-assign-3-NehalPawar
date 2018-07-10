@@ -9,42 +9,48 @@ import studentCoursesBackup.util.MyLogger;
 public class Results  implements FileDisplayInterface, StdoutDisplayInterface{
 
 	public static List<String> TestResult = new Vector<String>();
-String result = "";
-/*wriet to output file the list that stores result*/
-public void writeToFile(String fileName)
-{
-    // FileOutputStream outputStream;
-    try
+    String result = "";
+
+    /**wriet to output file the list that stores result
+     *@param filename
+     */
+    public void writeToFile(String fileName)
     {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
-        for (String str : TestResult)
+        // FileOutputStream outputStream;
+        try
         {
-            //byte[] strToBytes = str.getBytes();
-            //outputStream.write(strToBytes);
-            writer.write(str);
-            writer.write("\n");
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+            for (String str : TestResult)
+            {
+                writer.write(str);
+                writer.write("\n");
+            }
+            writer.close();
         }
-        //outputStream.close();
-        writer.close();
+        catch (Exception e)
+        {
+            System.out.println("Exception while writing to file." + e.toString());
+            System.exit(1);
+        }
     }
-    catch (Exception e)
+
+    /**
+     * 
+     * @param s
+     */
+    public void writeToStdout(String s)
     {
-        System.out.println("Exception while writing to file." + e.toString());
-        System.exit(1);
+	System.out.println(s);
     }
-}
-/* print to console */
-public void writeToStdout(String s)
-{
-    //for(String str : TestResult )
-    System.out.println(s);
-}
-/* store and display result from all tests*/
-public static void storeNewResult(String result)
-{
-    TestResult.add(result);
-    MyLogger.writeMessage(result, MyLogger.DebugLevel.AllStates);
-    //writeToStdout(result);
-}
+
+
+    /** store and display result from all tests
+     * @param result
+     */
+    public static void storeNewResult(String result)
+    {
+        TestResult.add(result);
+        MyLogger.writeMessage(result, MyLogger.DebugLevel.AllStates);
+    }
 		
 }

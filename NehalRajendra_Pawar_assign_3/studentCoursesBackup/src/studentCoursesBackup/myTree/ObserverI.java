@@ -4,5 +4,5 @@ import studentCoursesBackup.other.PassParameter;
 
 public interface ObserverI {
 
-	public void updateall(PassParameter P);
+	public void update(PassParameter P);
 }

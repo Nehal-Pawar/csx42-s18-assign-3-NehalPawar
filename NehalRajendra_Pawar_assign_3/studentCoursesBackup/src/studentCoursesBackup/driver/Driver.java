@@ -38,8 +38,8 @@ public class Driver
 	TreeBuilder treeBuilder = new TreeBuilder();
         	
         PassParameter Pass=new PassParameter();
-	Node node;
-	Node backup1 = null, backup2 = null;
+	Node Node_orig=new Node();
+	Node backup_Node_1= null, backup_Node_2= null;
 
 	//Read file and add to array
 	FileProcessor F1 = new FileProcessor();
@@ -56,23 +56,23 @@ public class Driver
 		{
 		String values[] = temp.split(":");
 		Bnumber = Integer.parseInt(values[0]);
-		node=treeBuilder.BnumberSearch(Bnumber);
+		Node_orig=treeBuilder.BnumberSearch(Bnumber);
 		
-		if(node==null){
+		if(Node_orig==null){
 		
-		node = treeBuilder.createNode(values[1],Bnumber);
-		backup1 = (Node) node.clone();		
-		backup2 = (Node) node.clone();
-		node.registerObserver(backup1);
-		node.registerObserver(backup2);
-		treeBuilder.insertNodes(node);
+		Node_orig= treeBuilder.createNode(values[1],Bnumber);
+		backup_Node_1= (Node) Node_orig.clone();		
+		backup_Node_2= (Node) Node_orig.clone();
+		Node_orig.registerObserver(backup_Node_1);
+		Node_orig.registerObserver(backup_Node_2);
+		treeBuilder.insertNodes(Node_orig);
 		}
 		else
 		{
 			Pass.setcourse(values[1]);
 			Pass.setNotifyType(PassParameter.NotifyType.Update);
-			node.updateall(Pass);
-			node.notifyall(Pass);			
+			Node_orig.update(Pass);
+			Node_orig.notifyAll(Pass);			
 		}
 		}
 		catch(CloneNotSupportedException e) 
@@ -83,8 +83,7 @@ public class Driver
 		}					
 		}
 	}	
-	treeBuilder.Display();	
-	/*
+		
 	FileProcessor F2 = new FileProcessor();
 	Set<String> zoom2 = new LinkedHashSet<>();
         zoom2 = F2.openFile(DELETEFILE);
@@ -94,13 +93,18 @@ public class Driver
 		{
 			String values[] = temp.split(":");
 			Bnumber = Integer.parseInt(values[0]);
-			node=treeBuilder.BnumberSearch(Bnumber);
+			Node_orig=treeBuilder.BnumberSearch(Bnumber);
 			Pass.setcourse(values[1]);
 			Pass.setNotifyType(PassParameter.NotifyType.Delete);
-			node.updateall(Pass);
-			node.notifyall(Pass);
+			Node_orig.update(Pass);
+			Node_orig.notifyAll(Pass);
 		}
 	}
-	*/
+	Results Re = new Results();
+	Results Re1 = new Results();
+	Results Re2 = new Results();
+	treeBuilder.printNodes(Node_orig,Re);
+	treeBuilder.PrintNodes(backup_Node_1,Re1);
+	treeBuilder.PrintNodes(backup_Node_2,Re2);
     }
 }

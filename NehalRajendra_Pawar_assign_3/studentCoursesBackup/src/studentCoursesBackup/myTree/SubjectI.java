@@ -6,6 +6,6 @@ public interface SubjectI {
 
 	public void registerObserver(Node observer);
 	public void removeObserver(Node observer);
-	public void notifyall(PassParameter P);
+	public void notifyAll(PassParameter P);
 	
 }

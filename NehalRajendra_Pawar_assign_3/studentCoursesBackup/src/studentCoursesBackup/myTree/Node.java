@@ -44,10 +44,10 @@ public class Node implements SubjectI ,ObserverI ,Cloneable
 		backupNodesList.add(observer);
 	}
 	@Override
-	public void notifyall(PassParameter P) {
+	public void notifyAll(PassParameter P) {
 		
 		for(Node node : backupNodesList) {
-			node.updateall(P);
+			node.update(P);
 		}
 	}
 	@Override
@@ -56,7 +56,7 @@ public class Node implements SubjectI ,ObserverI ,Cloneable
 
 	}
 	@Override
-	public void updateall(PassParameter P)
+	public void update(PassParameter P)
 	{		
 		if(P.getNotifyType()==PassParameter.NotifyType.Update)		
 		courses.add(P.getcourse());
