@@ -5,16 +5,20 @@ import studentCoursesBackup.myTree.Node;
 
 public class TreeBuilder
 {
-    Node Root;
-    Node Root1, Root2;
+    Node Node_orig;
+    Node backup_Node_1, backup_Node_2;
 
     public TreeBuilder()
     {
-        Root = null;
-        Root1 = null;
-        Root2 = null;
+        Node_orig= null;
+        backup_Node_1 = null;
+        backup_Node_2 = null;
     }
-
+    /*
+     * create new node and assign values
+     * @param course 
+     * @param Bnumber
+     */
     public Node createNode(String course, int Bnumber)
     {
         Node node = new Node();
@@ -26,18 +30,27 @@ public class TreeBuilder
         return node;
     }
 
+    /*
+     * code calls inserets node to tree 1 and its backup reference tree 2 tree3
+     * @param node
+     */
     public void insertNodes(Node node)
     {
-        Root = insertNode(Root, node);
+        Node_orig= insertNode(Node_orig, node);
         List<Node> list = new ArrayList<>();
         list = node.getbackupNodesList();
-        Root1 = insertNode(Root1, list.get(0));
-        Root2 = insertNode(Root2, list.get(1));
+        backup_Node_1 = insertNode(backup_Node_1, list.get(0));
+        backup_Node_2 = insertNode(backup_Node_2, list.get(1));
     }
 
+    /*
+    * code inserets node to tree
+    * https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
+    * @param root node
+    * @param current node
+    */
     private Node insertNode(Node root, Node node)
     {
-
         if (root == null)
         {
             root = node;
@@ -47,11 +60,13 @@ public class TreeBuilder
             root.right = insertNode(root.right, node);
         else if (node.getBnumber() < root.getBnumber())
             root.left = insertNode(root.left, node);
-
-
         return root;
     }
 
+     /*call individual print tree
+     * https://stackoverflow.com/questions/29735465/printing-binary-search-tree-inorder-recursively
+     * @param result
+     */	
     public void printtree(Node rootNode, Results result)
     {
         if (rootNode != null)
@@ -62,17 +77,25 @@ public class TreeBuilder
         }
     }
 
-
-    public void printNodes(Results result,Results result1,Results result2)
+    /*call print all 3 trees
+     * @param result
+     * @param result1
+     * @param result2
+     */
+    public void printNodes(Results result, Results result1, Results result2)
     {
-        printtree(Root,result);
-	System.out.println();
-        printtree(Root1,result1);
-	System.out.println();
-        printtree(Root2,result2);
+        printtree(Node_orig, result);
+        System.out.println();
+        printtree(backup_Node_1, result1);
+        System.out.println();
+        printtree(backup_Node_2, result2);
     }
 
-    //https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
+    /*search Bnumber and if exist return it or return null
+     *     https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
+     *     @param node
+     *     @param bnumber
+     */
     public Node search(Node root, int Bnumber)
     {
         if (root == null)
@@ -87,9 +110,11 @@ public class TreeBuilder
 
     public Node BnumberSearch(int Bnumber)
     {
-        Node found = search(Root, Bnumber);
+        Node found = search(Node_orig, Bnumber);
         if (found != null)
             return found;
         return null;
     }
 }
+ 
+ 
