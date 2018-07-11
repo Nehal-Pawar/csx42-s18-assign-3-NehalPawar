@@ -1,4 +1,3 @@
-
 Assuming you are in the directory containing this README:
 
 ## To clean:
@@ -11,12 +10,15 @@ ant -buildfile src/build.xml all
 -----------------------------------------------------------------------
 ## To run by specifying arguments from command line 
 ## We will use this to run your code
-ant -buildfile src/build.xml run -Darg0=input.txt -Darg1=output.txt -Darg2=3
+
+ant -buildfile src/build.xml run -Darg0=input.txt -Darg1=delete.txt 
+-Darg2=output1.txt -Darg3=output2.txt -Darg4=output3.txt -Darg5=3
+(5th argument 1=FILE_PROCESSOR 2=CONSTRUCTOR 3=AllStates)
 
 -----------------------------------------------------------------------
 
 ## To create tarball for submission
-ant -buildfile src/build.xml tarzip or tar -zcvf NehalRajendra_Pawar_assign_2.tar.gz NehalRajendra_Pawar_assign_2
+ant -buildfile src/build.xml tarzip or tar -zcvf NehalRajendra_Pawar_assign_3.tar.gz NehalRajendra_Pawar_assign_3
 
 -----------------------------------------------------------------------
 
@@ -27,24 +29,22 @@ official form that I have cheated and that this form will be stored in
 my official university record. I also understand that I will receive a
 grade of 0 for the involved assignment for my first offense and that I
 will receive a grade of F for the course for any additional
-offense.
+offense.”
 
-[Date: 6/28/2018]
+[Date: 7/10/2018]
 
+-----------------------------------------------------------------------
+
+Describe how the observer pattern has been implemented:
+The original node acts a subject and the backup 1 and 2 act as listner. 
+The Node call implements both subject and listner. The notifyAll method 
+updates both the backup listners whose reference is stored in original
+node.
+-----------------------------------------------------------------------
 
 Provide list of citations (urls, etc.) from where you have taken code
 (if any).
 
-Explain the cases for which command line validation has been provided
-1.Once signal truns green it doesnot change state when called green again.
-2. Only 2 cars can pass if only 1 car is available in queue and signal still green then newly added car can pass successfully.
-3. Signal on red cannot go to red again.
-4. input.txt not found
-5. No cars at signals
-6. 3rd argument 1=FILE_PROCESSOR 2=CONSTRUCTOR 3=AllStates
-Assumption:
-1.When signal is green another signal green is called the old one is turned red and new one turned green
-Design of input format:
-1.Names (North,East,South,West,Green,Red) should have first letter capital.
-2.First argument in line is the direcion which needs to turn Red,Green or Add cars.
-3.Second argument should be either turn signal red,green or comma seperated cars.
+https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
+https://stackoverflow.com/questions/29735465/printing-binary-search-tree-inorder-recursively
+
