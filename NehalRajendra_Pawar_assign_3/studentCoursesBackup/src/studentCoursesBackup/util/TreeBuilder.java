@@ -52,14 +52,24 @@ public class TreeBuilder
         return root;
     }
 
-    public void printNodes(Node rootNode, Results result)
+    public void printtree(Node rootNode, Results result)
     {
         if (rootNode != null)
         {
-            PrintNodes(rootNode.left, result);
+            printtree(rootNode.left, result);
             result.storeNewResult(rootNode.getBnumber() + " " + rootNode.getCourses());
-            PrintNodes(rootNode.right, result);
+            printtree(rootNode.right, result);
         }
+    }
+
+
+    public void printNodes(Results result,Results result1,Results result2)
+    {
+        printtree(Root,result);
+	System.out.println();
+        printtree(Root1,result1);
+	System.out.println();
+        printtree(Root2,result2);
     }
 
     //https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/

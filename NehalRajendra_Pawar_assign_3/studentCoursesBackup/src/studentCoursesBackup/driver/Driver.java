@@ -100,11 +100,13 @@ public class Driver
 			Node_orig.notifyAll(Pass);
 		}
 	}
+
 	Results Re = new Results();
 	Results Re1 = new Results();
 	Results Re2 = new Results();
-	treeBuilder.printNodes(Node_orig,Re);
-	treeBuilder.PrintNodes(backup_Node_1,Re1);
-	treeBuilder.PrintNodes(backup_Node_2,Re2);
+	treeBuilder.printNodes(Re,Re1,Re2);
+	Re.writeToFile(OUTPUTFILE1);
+	Re1.writeToFile(OUTPUTFILE2);
+	Re2.writeToFile(OUTPUTFILE3);
     }
 }

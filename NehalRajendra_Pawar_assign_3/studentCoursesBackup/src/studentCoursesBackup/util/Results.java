@@ -8,7 +8,7 @@ import studentCoursesBackup.util.MyLogger;
 
 public class Results  implements FileDisplayInterface, StdoutDisplayInterface{
 
-	public static List<String> TestResult = new Vector<String>();
+	public List<String> TestResult = new Vector<String>();
     String result = "";
 
     /**wriet to output file the list that stores result
@@ -47,7 +47,7 @@ public class Results  implements FileDisplayInterface, StdoutDisplayInterface{
     /** store and display result from all tests
      * @param result
      */
-    public static void storeNewResult(String result)
+    public void storeNewResult(String result)
     {
         TestResult.add(result);
         MyLogger.writeMessage(result, MyLogger.DebugLevel.AllStates);
